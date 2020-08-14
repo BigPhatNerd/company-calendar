@@ -1,35 +1,42 @@
 <article class="post calendar">
-  <div class="title">
-    <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s Schedule</h2>
-  </div>
-  {{#each calendar}}
-  <div>
-    {{@key}}: {{this.events.title}}
-  </div>
-   {{/each}}
+    <div class="title">
+        <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s {{calendar.employee.email}} Schedule</h2>
+        <h1>
+            {{#each calendar.events }}
+            {{this.title}}
+            {{this.description}}
+            {{this.employee.firstname}}
+            {{/each }}
+        </h1>
+    </div>
+    <div>
+        {{calendar.id}}
+        {{{calendar.events.title}}}
+        <br>
+        {{calendar.event.description}}
+        <br>
+        {{calendar.event.date}} {{calendar.event.start_time}} {{calendar.event.end_time}}
+    </div>
 </article>
-
 {{#if loggedIn}}
 <form class="event-form">
-  <div>
-    <h4>Title</h4>
-    <input name="event-title">
-    <br>
-    <h4>Description</h4>
-    <textarea name="event-description"></textarea>
-    <h4>Date</h4>
-    <input name="event-date">
-    <h4>Start Time</h4>
-    <input name="event-start_time">
-    <h4>End Time</h4>
-    <input name="event-end_time">
-    <br>
-  </div>
-  <div>
-    <button type="submit">Add Event</button>
-  </div>
+    <div>
+        <h4>Title</h4>
+        <input name="event-title">
+        <br>
+        <h4>Description</h4>
+        <textarea name="event-description"></textarea>
+        <h4>Date</h4>
+        <input name="event-date">
+        <h4>Start Time</h4>
+        <input name="event-start_time">
+        <h4>End Time</h4>
+        <input name="event-end_time">
+        <br>
+    </div>
+    <div>
+        <button type="submit">Add Event</button>
+    </div>
 </form>
 {{/if}}
-{{#if loggedIn}}
 <script src="/javascript/event.js"></script>
-{{/if}}
